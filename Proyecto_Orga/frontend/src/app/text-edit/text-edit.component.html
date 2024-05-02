@@ -1,0 +1,18 @@
+<div class="relative ml-40 my-8">
+    <input type="file" #fileInput (change)="fileChange($event)" accept=".orga" style="display: none">
+    <button (mouseover)="toggleDropdown()" class="md:dark:bg-gray-900 px-3 py-2 rounded-lg">Archivo ﹀</button>
+    <div (mouseleave)="hideDropdown()" *ngIf="showDropdown" class="absolute dark:bg-gray-900 text-white mt-2 rounded-lg shadow-lg p-2">
+        <a class="block px-4 py-2 text-sm hover:bg-purple-700 hover.cursor-pointer" (click)="openFile(); $event.preventDefault()">Abrir archivo</a>
+        <a class="block px-4 py-2 text-sm hover:bg-purple-700 hover.cursor-pointer" (click)="newFile(); $event.preventDefault()">Nuevo archivo</a>
+        <a class="block px-4 py-2 text-sm hover:bg-purple-700 hover.cursor-pointer" (click)="saveasFile(); $event.preventDefault()">Guardar Como</a>
+        <a class="block px-4 py-2 text-sm hover:bg-purple-700 hover.cursor-pointer" (click)="saveFile(); $event.preventDefault()">Guardar</a>
+        <a class="block px-4 py-2 text-sm hover:bg-purple-700 hover.cursor-pointer" (click)="exit(); $event.preventDefault()">Salir</a>
+    </div>
+    <p *ngIf="fileName" class="dark:bg-gray-900 text-white hover:bg-purple-700 hover.cursor-pointer rounded-lg ml-8 inline-block p-2">{{ fileName }}</p>
+</div>
+<div class="flex justify-center items-center h-auto w-3/4 mx-auto my-2">
+    <textarea id="fileContent" class="flex items-center h-60 w-3/4 border p-2 rounded-md resize-none overflow-auto bg-slate-300 text-black font-mono" placeholder="¡Comienza a Diseñar!" [(ngModel)]="fileContent" (input)="handleTextareaChange($event)"></textarea>
+</div>
+<div class="flex justify-end mx-10 w-3/4 my-12 mt-0">
+    <button class="md:bg-purple-700 hover:dark:bg-gray-900 hover.cursor-pointer px-4 py-2 rounded-lg">Analizar</button>
+</div>
